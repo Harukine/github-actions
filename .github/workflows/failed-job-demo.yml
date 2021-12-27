@@ -1,8 +1,6 @@
 name: FailedJobIssueDemo
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -18,7 +16,7 @@ jobs:
       - name: Step to run on failure
         if: ${{ failure() }}
         run: |
-          curl: --request POST \
+          curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/issues \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
           --header 'content-type: application/json' \
