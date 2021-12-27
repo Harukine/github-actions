@@ -1,4 +1,4 @@
-name: FailedJobIssueDemo
+name: failed-job-demo
 
 on:
   workflow_dispatch:
