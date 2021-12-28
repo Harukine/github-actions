@@ -1,0 +1,25 @@
+name: upload-node-artifact-demo
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  BuildAndUploadArtifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: install npm
+      - run: echo "npm install"
+      - name: run tests
+      - run: echo "npm test"
+      - name: build dist
+      - run: echo "npm build"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: npm-artifact
+          path: "./github"
+          #path: "./dist" proper node path
+      
